@@ -13,25 +13,25 @@ func main() {
 	defer input.Close()
 	sc := bufio.NewScanner(input)
 
-	var numberOfIncreases int
+	var increases int
 
 	//Read first three elements
 	sc.Scan()
-	prevPrevPrevDepth, _ := strconv.Atoi(sc.Text())
+	pre_pre_pre_depth, _ := strconv.Atoi(sc.Text())
 	sc.Scan()
-	prevPrevDepth, _ := strconv.Atoi(sc.Text())
+	pre_pre_depth, _ := strconv.Atoi(sc.Text())
 	sc.Scan()
-	prevDepth, _ := strconv.Atoi(sc.Text())
+	pre_depth, _ := strconv.Atoi(sc.Text())
 
 	for sc.Scan() {
 		depth, _ := strconv.Atoi(sc.Text())
-		if depth > prevPrevPrevDepth {
-			numberOfIncreases++
+		if depth > pre_pre_pre_depth {
+			increases++
 		}
-		prevPrevPrevDepth = prevPrevDepth
-		prevPrevDepth = prevDepth
-		prevDepth = depth
+		pre_pre_pre_depth = pre_pre_depth
+		pre_pre_depth = pre_depth
+		pre_depth = depth
 	}
 
-	fmt.Println(numberOfIncreases)
+	fmt.Println(increases)
 }

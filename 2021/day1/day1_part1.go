@@ -12,17 +12,17 @@ func main() {
 	defer input.Close()
 	sc := bufio.NewScanner(input)
 
-	var numberOfIncreases int
+	var increases int
 
 	sc.Scan()
-	prevDepth, _ := strconv.Atoi(sc.Text())
+	prev_depth, _ := strconv.Atoi(sc.Text())
 	for sc.Scan() {
 		depth, _ := strconv.Atoi(sc.Text())
-		if depth > prevDepth {
-			numberOfIncreases++
+		if depth > prev_depth {
+			increases++
 		}
-		prevDepth = depth
+		prev_depth = depth
 	}
 
-	fmt.Println(numberOfIncreases)
+	fmt.Println(increases)
 }
