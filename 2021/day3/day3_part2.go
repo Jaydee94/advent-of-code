@@ -19,12 +19,12 @@ func main() {
 	}
 	co2_rating := append([]string{}, oxygen_rating...)
 
-	gamma, _ := strconv.ParseInt(filer_values(oxygen_rating, 0, true), 2, 64)
-	epsilon, _ := strconv.ParseInt(filer_values(co2_rating, 0, false), 2, 64)
+	gamma, _ := strconv.ParseInt(file_values(oxygen_rating, 0, true), 2, 64)
+	epsilon, _ := strconv.ParseInt(file_values(co2_rating, 0, false), 2, 64)
 	fmt.Println(gamma * epsilon)
 }
 
-func filer_values(values []string, bit_to_consider int, most_common bool) string {
+func file_values(values []string, bit_to_consider int, most_common bool) string {
 	if len(values) == 1 {
 		return values[0]
 	}
@@ -38,7 +38,7 @@ func filer_values(values []string, bit_to_consider int, most_common bool) string
 		}
 	}
 	if len(value_one) >= len(value_zero) == most_common {
-		return filer_values(value_one, bit_to_consider+1, most_common)
+		return file_values(value_one, bit_to_consider+1, most_common)
 	}
-	return filer_values(value_zero, bit_to_consider+1, most_common)
+	return file_values(value_zero, bit_to_consider+1, most_common)
 }
