@@ -41,36 +41,36 @@ func decode(signal []string) map[string]string {
 
 	for _, digit := range signal {
 		switch len(digit) {
-		case 2: //There is just one digit with two segments
+		case 2:
 			sig[sortSegments(digit)] = "1"
-		case 3: //There is just one digit with three segments
+		case 3:
 			sig[sortSegments(digit)] = "7"
-		case 4: //There is just one digit with four segments
+		case 4:
 			sig[sortSegments(digit)] = "4"
-		case 5: //There are three digits with five segments
+		case 5:
 			for _, segment := range digit {
-				if count_instance[segment] == 4 { //Only the digit 2 has a segment that has 4 instances in all digits (segment e)
+				if count_instance[segment] == 4 {
 					sig[sortSegments(digit)] = "2"
-				} else if count_instance[segment] == 6 { //Only the digit 5 has a segment that has 6 instances in all digits (segment b)
+				} else if count_instance[segment] == 6 {
 					sig[sortSegments(digit)] = "5"
 				}
 			}
 			if _, twoOrFive := sig[sortSegments(digit)]; !twoOrFive {
-				sig[sortSegments(digit)] = "3" //If it has 5 segments and it's not 2 or 5 then just digit 3 is left
+				sig[sortSegments(digit)] = "3"
 			}
-		case 6: //There are three digits with six segments
+		case 6:
 			count_segments_with_key_instances := make(map[int]int)
 			for _, segment := range digit {
 				count_segments_with_key_instances[count_instance[segment]]++
 			}
-			if count_segments_with_key_instances[4] == 0 { //There is just one digit with 6 segments missing the segment e
-				sig[sortSegments(digit)] = "9" //(that has 4 instances in digits)
-			} else if count_segments_with_key_instances[7] == 1 { //There is just one digit with 6 segments missing the segment d that is one of
-				sig[sortSegments(digit)] = "0" //the two segments with 7 instances in the ten digits
+			if count_segments_with_key_instances[4] == 0 {
+				sig[sortSegments(digit)] = "9"
+			} else if count_segments_with_key_instances[7] == 1 {
+				sig[sortSegments(digit)] = "0"
 			} else {
 				sig[sortSegments(digit)] = "6"
 			}
-		case 7: //There is just one digit with seven segments
+		case 7:
 			sig[sortSegments(digit)] = "8"
 		}
 	}

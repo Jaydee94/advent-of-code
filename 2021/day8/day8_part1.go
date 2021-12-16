@@ -8,7 +8,6 @@ import (
 )
 
 func main() {
-	//Read the file
 	input, _ := os.Open("input.txt")
 	defer input.Close()
 	sc := bufio.NewScanner(input)
