@@ -6,3 +6,7 @@ My Advent of Code solutions https://adventofcode.com/
 ### 2021
 
 - Golang
+
+### 2022
+
+- Python
